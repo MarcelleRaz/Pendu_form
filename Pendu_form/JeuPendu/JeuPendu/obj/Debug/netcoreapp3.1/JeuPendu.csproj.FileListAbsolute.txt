@@ -1,0 +1,16 @@
+F:\exo_BackEnd\Projet Bingo\Pendu_form\JeuPendu\JeuPendu\bin\Debug\netcoreapp3.1\JeuPendu.exe
+F:\exo_BackEnd\Projet Bingo\Pendu_form\JeuPendu\JeuPendu\bin\Debug\netcoreapp3.1\JeuPendu.deps.json
+F:\exo_BackEnd\Projet Bingo\Pendu_form\JeuPendu\JeuPendu\bin\Debug\netcoreapp3.1\JeuPendu.runtimeconfig.json
+F:\exo_BackEnd\Projet Bingo\Pendu_form\JeuPendu\JeuPendu\bin\Debug\netcoreapp3.1\JeuPendu.runtimeconfig.dev.json
+F:\exo_BackEnd\Projet Bingo\Pendu_form\JeuPendu\JeuPendu\bin\Debug\netcoreapp3.1\JeuPendu.dll
+F:\exo_BackEnd\Projet Bingo\Pendu_form\JeuPendu\JeuPendu\bin\Debug\netcoreapp3.1\JeuPendu.pdb
+F:\exo_BackEnd\Projet Bingo\Pendu_form\JeuPendu\JeuPendu\obj\Debug\netcoreapp3.1\JeuPendu.csproj.AssemblyReference.cache
+F:\exo_BackEnd\Projet Bingo\Pendu_form\JeuPendu\JeuPendu\obj\Debug\netcoreapp3.1\JeuPendu.Form1.resources
+F:\exo_BackEnd\Projet Bingo\Pendu_form\JeuPendu\JeuPendu\obj\Debug\netcoreapp3.1\JeuPendu.csproj.GenerateResource.cache
+F:\exo_BackEnd\Projet Bingo\Pendu_form\JeuPendu\JeuPendu\obj\Debug\netcoreapp3.1\JeuPendu.GeneratedMSBuildEditorConfig.editorconfig
+F:\exo_BackEnd\Projet Bingo\Pendu_form\JeuPendu\JeuPendu\obj\Debug\netcoreapp3.1\JeuPendu.AssemblyInfoInputs.cache
+F:\exo_BackEnd\Projet Bingo\Pendu_form\JeuPendu\JeuPendu\obj\Debug\netcoreapp3.1\JeuPendu.AssemblyInfo.cs
+F:\exo_BackEnd\Projet Bingo\Pendu_form\JeuPendu\JeuPendu\obj\Debug\netcoreapp3.1\JeuPendu.csproj.CoreCompileInputs.cache
+F:\exo_BackEnd\Projet Bingo\Pendu_form\JeuPendu\JeuPendu\obj\Debug\netcoreapp3.1\JeuPendu.dll
+F:\exo_BackEnd\Projet Bingo\Pendu_form\JeuPendu\JeuPendu\obj\Debug\netcoreapp3.1\JeuPendu.pdb
+F:\exo_BackEnd\Projet Bingo\Pendu_form\JeuPendu\JeuPendu\obj\Debug\netcoreapp3.1\JeuPendu.genruntimeconfig.cache
