@@ -29,8 +29,8 @@ namespace JeuPendu
         /// </summary>
         private void InitializeComponent()
         {
-            this.Initialiser = new System.Windows.Forms.Button();
-            this.Quitter = new System.Windows.Forms.Button();
+            this.BInitialiser = new System.Windows.Forms.Button();
+            this.BQuitter = new System.Windows.Forms.Button();
             this.name = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.txtvictoire = new System.Windows.Forms.Label();
@@ -41,9 +41,11 @@ namespace JeuPendu
             this.label1 = new System.Windows.Forms.Label();
             this.textname = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.texterreur = new System.Windows.Forms.Label();
-            this.radiomot = new System.Windows.Forms.RadioButton();
-            this.radioLettre = new System.Windows.Forms.RadioButton();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.LabMot = new System.Windows.Forms.Label();
+            this.LabLettre = new System.Windows.Forms.Label();
+            this.bValider = new System.Windows.Forms.Button();
             this.textmot = new System.Windows.Forms.TextBox();
             this.textlettre = new System.Windows.Forms.TextBox();
             this.textdefinition = new System.Windows.Forms.Label();
@@ -55,25 +57,25 @@ namespace JeuPendu
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
-            // Initialiser
+            // BInitialiser
             // 
-            this.Initialiser.Location = new System.Drawing.Point(467, 42);
-            this.Initialiser.Name = "Initialiser";
-            this.Initialiser.Size = new System.Drawing.Size(182, 29);
-            this.Initialiser.TabIndex = 0;
-            this.Initialiser.Text = "Nouvelle partie";
-            this.Initialiser.UseVisualStyleBackColor = true;
-            this.Initialiser.Click += new System.EventHandler(this.initialiser_Click);
+            this.BInitialiser.Location = new System.Drawing.Point(467, 42);
+            this.BInitialiser.Name = "BInitialiser";
+            this.BInitialiser.Size = new System.Drawing.Size(182, 29);
+            this.BInitialiser.TabIndex = 0;
+            this.BInitialiser.Text = "Nouvelle partie";
+            this.BInitialiser.UseVisualStyleBackColor = true;
+            this.BInitialiser.Click += new System.EventHandler(this.initialiser_Click);
             // 
-            // Quitter
+            // BQuitter
             // 
-            this.Quitter.Location = new System.Drawing.Point(467, 89);
-            this.Quitter.Name = "Quitter";
-            this.Quitter.Size = new System.Drawing.Size(182, 29);
-            this.Quitter.TabIndex = 1;
-            this.Quitter.Text = "Quitter";
-            this.Quitter.UseVisualStyleBackColor = true;
-            this.Quitter.Click += new System.EventHandler(this.Quitter_Click);
+            this.BQuitter.Location = new System.Drawing.Point(467, 89);
+            this.BQuitter.Name = "BQuitter";
+            this.BQuitter.Size = new System.Drawing.Size(182, 29);
+            this.BQuitter.TabIndex = 1;
+            this.BQuitter.Text = "Quitter";
+            this.BQuitter.UseVisualStyleBackColor = true;
+            this.BQuitter.Click += new System.EventHandler(this.Quitter_Click);
             // 
             // name
             // 
@@ -167,12 +169,15 @@ namespace JeuPendu
             this.textname.Name = "textname";
             this.textname.Size = new System.Drawing.Size(180, 27);
             this.textname.TabIndex = 3;
+            this.textname.MouseLeave += new System.EventHandler(this.textname_MouseLeave);
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.texterreur);
-            this.groupBox2.Controls.Add(this.radiomot);
-            this.groupBox2.Controls.Add(this.radioLettre);
+            this.groupBox2.Controls.Add(this.label5);
+            this.groupBox2.Controls.Add(this.label2);
+            this.groupBox2.Controls.Add(this.LabMot);
+            this.groupBox2.Controls.Add(this.LabLettre);
+            this.groupBox2.Controls.Add(this.bValider);
             this.groupBox2.Controls.Add(this.textmot);
             this.groupBox2.Controls.Add(this.textlettre);
             this.groupBox2.Controls.Add(this.textdefinition);
@@ -187,66 +192,78 @@ namespace JeuPendu
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Jeu";
             // 
-            // texterreur
+            // label5
             // 
-            this.texterreur.AutoSize = true;
-            this.texterreur.ForeColor = System.Drawing.Color.Red;
-            this.texterreur.Location = new System.Drawing.Point(325, 136);
-            this.texterreur.Name = "texterreur";
-            this.texterreur.Size = new System.Drawing.Size(0, 20);
-            this.texterreur.TabIndex = 8;
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(13, 181);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(459, 20);
+            this.label5.TabIndex = 13;
+            this.label5.Text = "---------------------------------------------------------------------------";
             // 
-            // radiomot
+            // label2
             // 
-            this.radiomot.AutoSize = true;
-            this.radiomot.Location = new System.Drawing.Point(325, 74);
-            this.radiomot.Name = "radiomot";
-            this.radiomot.Size = new System.Drawing.Size(131, 24);
-            this.radiomot.TabIndex = 7;
-            this.radiomot.TabStop = true;
-            this.radiomot.Text = "Deviner le mot:";
-            this.radiomot.UseVisualStyleBackColor = true;
-            this.radiomot.CheckedChanged += new System.EventHandler(this.radiomot_CheckedChanged);
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(13, 87);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(459, 20);
+            this.label2.TabIndex = 12;
+            this.label2.Text = "---------------------------------------------------------------------------";
             // 
-            // radioLettre
+            // LabMot
             // 
-            this.radioLettre.AutoSize = true;
-            this.radioLettre.Location = new System.Drawing.Point(325, 33);
-            this.radioLettre.Name = "radioLettre";
-            this.radioLettre.Size = new System.Drawing.Size(151, 24);
-            this.radioLettre.TabIndex = 6;
-            this.radioLettre.TabStop = true;
-            this.radioLettre.Text = "Deviner une lettre:";
-            this.radioLettre.UseVisualStyleBackColor = true;
-            this.radioLettre.CheckedChanged += new System.EventHandler(this.radioLettre_CheckedChanged);
+            this.LabMot.AutoSize = true;
+            this.LabMot.Location = new System.Drawing.Point(336, 68);
+            this.LabMot.Name = "LabMot";
+            this.LabMot.Size = new System.Drawing.Size(110, 20);
+            this.LabMot.TabIndex = 11;
+            this.LabMot.Text = "Deviner le mot:";
+            // 
+            // LabLettre
+            // 
+            this.LabLettre.AutoSize = true;
+            this.LabLettre.Location = new System.Drawing.Point(336, 28);
+            this.LabLettre.Name = "LabLettre";
+            this.LabLettre.Size = new System.Drawing.Size(130, 20);
+            this.LabLettre.TabIndex = 10;
+            this.LabLettre.Text = "Deviner une lettre:";
+            // 
+            // bValider
+            // 
+            this.bValider.Location = new System.Drawing.Point(500, 110);
+            this.bValider.Name = "bValider";
+            this.bValider.Size = new System.Drawing.Size(105, 34);
+            this.bValider.TabIndex = 9;
+            this.bValider.Text = "Valider";
+            this.bValider.UseVisualStyleBackColor = true;
+            this.bValider.Click += new System.EventHandler(this.bValider_Click);
             // 
             // textmot
             // 
-            this.textmot.Location = new System.Drawing.Point(499, 72);
+            this.textmot.Location = new System.Drawing.Point(499, 61);
             this.textmot.Name = "textmot";
             this.textmot.Size = new System.Drawing.Size(107, 27);
             this.textmot.TabIndex = 4;
             // 
             // textlettre
             // 
-            this.textlettre.Location = new System.Drawing.Point(499, 32);
+            this.textlettre.Location = new System.Drawing.Point(499, 21);
             this.textlettre.Name = "textlettre";
             this.textlettre.Size = new System.Drawing.Size(107, 27);
             this.textlettre.TabIndex = 4;
             // 
             // textdefinition
             // 
-            this.textdefinition.AutoSize = true;
-            this.textdefinition.Location = new System.Drawing.Point(19, 111);
+            this.textdefinition.Location = new System.Drawing.Point(13, 110);
             this.textdefinition.Margin = new System.Windows.Forms.Padding(10, 3, 3, 3);
             this.textdefinition.Name = "textdefinition";
-            this.textdefinition.Size = new System.Drawing.Size(0, 20);
+            this.textdefinition.Size = new System.Drawing.Size(453, 82);
             this.textdefinition.TabIndex = 3;
             // 
             // txtessai
             // 
             this.txtessai.AutoSize = true;
-            this.txtessai.Location = new System.Drawing.Point(25, 193);
+            this.txtessai.Location = new System.Drawing.Point(13, 194);
             this.txtessai.Name = "txtessai";
             this.txtessai.Size = new System.Drawing.Size(0, 20);
             this.txtessai.TabIndex = 3;
@@ -254,7 +271,7 @@ namespace JeuPendu
             // txtmotsslettre
             // 
             this.txtmotsslettre.AutoSize = true;
-            this.txtmotsslettre.Location = new System.Drawing.Point(25, 91);
+            this.txtmotsslettre.Location = new System.Drawing.Point(166, 69);
             this.txtmotsslettre.Name = "txtmotsslettre";
             this.txtmotsslettre.Size = new System.Drawing.Size(0, 20);
             this.txtmotsslettre.TabIndex = 2;
@@ -262,7 +279,7 @@ namespace JeuPendu
             // txtmotatrouver
             // 
             this.txtmotatrouver.AutoSize = true;
-            this.txtmotatrouver.Location = new System.Drawing.Point(25, 72);
+            this.txtmotatrouver.Location = new System.Drawing.Point(19, 69);
             this.txtmotatrouver.Name = "txtmotatrouver";
             this.txtmotatrouver.Size = new System.Drawing.Size(0, 20);
             this.txtmotatrouver.TabIndex = 1;
@@ -270,9 +287,10 @@ namespace JeuPendu
             // textbienvenue
             // 
             this.textbienvenue.AutoSize = true;
-            this.textbienvenue.Location = new System.Drawing.Point(25, 39);
+            this.textbienvenue.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.textbienvenue.Location = new System.Drawing.Point(19, 23);
             this.textbienvenue.Name = "textbienvenue";
-            this.textbienvenue.Size = new System.Drawing.Size(0, 20);
+            this.textbienvenue.Size = new System.Drawing.Size(0, 28);
             this.textbienvenue.TabIndex = 0;
             // 
             // Form1
@@ -282,10 +300,10 @@ namespace JeuPendu
             this.ClientSize = new System.Drawing.Size(675, 450);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.Quitter);
-            this.Controls.Add(this.Initialiser);
+            this.Controls.Add(this.BQuitter);
+            this.Controls.Add(this.BInitialiser);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "JEU PENDU";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
@@ -296,8 +314,8 @@ namespace JeuPendu
 
         #endregion
 
-        private System.Windows.Forms.Button Initialiser;
-        private System.Windows.Forms.Button Quitter;
+        private System.Windows.Forms.Button BInitialiser;
+        private System.Windows.Forms.Button BQuitter;
         private System.Windows.Forms.Label name;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.TextBox textname;
@@ -314,10 +332,12 @@ namespace JeuPendu
         private System.Windows.Forms.Label txtvictoire;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox textmot;
-        private System.Windows.Forms.RadioButton radiomot;
-        private System.Windows.Forms.RadioButton radioLettre;
         private System.Windows.Forms.Label textdefinition;
-        private System.Windows.Forms.Label texterreur;
+        private System.Windows.Forms.Button bValider;
+        private System.Windows.Forms.Label LabMot;
+        private System.Windows.Forms.Label LabLettre;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label5;
     }
 }
 

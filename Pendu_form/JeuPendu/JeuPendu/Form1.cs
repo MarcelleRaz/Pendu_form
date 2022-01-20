@@ -22,6 +22,8 @@ namespace JeuPendu
         private char[] motenchar;
         private char[] motsslettre;
         private string motatrouver;
+
+        #region constructeur
         public Form1()
         {
             InitializeComponent();
@@ -34,6 +36,8 @@ namespace JeuPendu
             mot = new ListeDeMots();
             rand = new Random();
         }
+        #endregion
+        #region start methods
         [STAThread]
         public static void Main()
         {
@@ -42,10 +46,17 @@ namespace JeuPendu
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Form1());
         }
+        #endregion
+
+        #region innitialiser le jeu
+        private void textname_MouseLeave(object sender, EventArgs e)
+        {
+            nom = textname.Text;
+            MessageBox.Show("Bonjour " + nom + "!\nCliquez sur 'Nouvelle partie' pour débuter le jeu.");
+        }
         private void initialiser_Click(object sender, EventArgs e)
         {
             nbpartie++;
-            textname.Text=
             textbienvenue.Text = "";
             initPendu();
             jouer();
@@ -59,12 +70,14 @@ namespace JeuPendu
             essai = 0;
             motsslettre = null;
             motenchar = null;
-            textlettre.Enabled=false;
-            textmot.Enabled = false;
+            textlettre.Text = null;
+            textmot.Text = null;
+            txtmotsslettre.Text = "";
         }
+        #endregion
+        #region jeu
         public string jouer()
         {
-            nom = textname.Text;
             int x = rand.Next(0, 9);
             textbienvenue.ForeColor = Color.Brown;
             textbienvenue.Text = $"Je suis un mot à {mot.Lismots[x].Length} caractères";
@@ -89,27 +102,23 @@ namespace JeuPendu
         }
         public char choisirlettre()
         {
-            txtessai.Text = $"vous avez {5 - essai} essai pour deviner votre mot à {motatrouver.Length} caractères";
             string choixlettre = textlettre.Text;
+            textmot.Text = string.Empty;
+            char lettre =' ';
+            
             bool erreur = veriflettre(choixlettre);
-            char lettre = ' ';
-            while (erreur == true)
-            {
-                choixlettre = Console.ReadLine();
-                erreur = veriflettre(choixlettre);
-            }
             if (erreur == false)
             {
                 lettre = Convert.ToChar(choixlettre);
                 convertenlettre(lettre);
             }
-            essai++;
+            
             return lettre;
         }
         public bool veriflettre(string choixlettre)
         {
             bool erreur;
-            if (choixlettre.All(char.IsDigit) || choixlettre.Length > 1 || choixlettre == null)
+            if (choixlettre.All(char.IsDigit) || choixlettre.Length != 1)
             {
                 erreur = true;
                 erreurchoixlettre(erreur);
@@ -126,12 +135,14 @@ namespace JeuPendu
             while (erreur == true)
             {
                 erreur = false;
-                texterreur.Text="Erreur de saisie. Veuillez saisir seulement une lettre:";
+                essai--;
+                txtessai.Text="Erreur de saisie. Veuillez saisir seulement une lettre!";
             }
         }
         public char[] convertenlettre(char lettre)
         {
             txtmotatrouver.Text = "Le mot à trouver est: ";
+            txtmotsslettre.Text = null;
             for (int i = 0; i < motenchar.Length; i++)
             {
                 if (motenchar[i] == lettre)
@@ -146,51 +157,62 @@ namespace JeuPendu
         }
         public void devinerMot()
         {
-            txtessai.Text = $"vous avez {5 - essai} essai pour deviner votre mot à {motatrouver.Length} caractères";
-            for (int i = 0; i < motsslettre.Count(); i++)
-            {
-                txtmotsslettre.Text+= motsslettre[i] + " ";
-            }
-            essai++;
+            textlettre.Text = null;
             verifmot(textmot.Text);
         }
         public void verifmot(string reponse)
         {
-            if (reponse != motatrouver && essai == 4)
+            if (reponse != motatrouver && essai >= 5)
             {
-                txtmotatrouver.Text ="Le mot était: " + motatrouver;
-                texterreur.Text="Vous êtes pendu!";
-                initPendu();
+                txtmotatrouver.Text ="Le mot était: ";
+                txtmotsslettre.Text = motatrouver;
+                txtessai.ForeColor = Color.Red;
+                txtessai.Text="Vous êtes pendu!";
             }
             if (reponse.Equals(motatrouver))
             {
                 nbpoint++;
-                texterreur.Text = "Bravo! Vous avez trouvé le mot!";
-                texterreur.ForeColor = Color.Green;
+                txtessai.Text = "Bravo! Vous avez trouvé le mot!";
+                txtessai.ForeColor = Color.Green;
                 nbvictoire = nbpartie / 3;
-                initPendu();
             }
             if (reponse != motatrouver && essai < 5)
             {
-                texterreur.Text=$"Vous avez encore {5 - essai} essai!";
+                txtessai.Text=$"Vous avez encore {5 - essai} essai!";
             }
         }
+        #endregion
+        #region valider le choix
+        private void bValider_Click(object sender, EventArgs e)
+        {
+            if (essai < 5)
+            {
+                essai = essai + 1;
+                if (textlettre.Text != "")
+                {
+                    choisirlettre();
+                }
+                if (textmot.Text != "" && textlettre.Text != "")
+                {
+                    choisirlettre();
+                }
+                if (textlettre.Text == "" && textmot.Text != "")
+                {
+                    devinerMot();
+                }
+            }
+            else
+            {
+                string reponse = string.Join("", motsslettre);
+                verifmot(reponse);
+            }
+        }
+        #endregion
+        #region quitter le jeu
         private void Quitter_Click(object sender, EventArgs e)
         {
             System.Environment.Exit(0);
         }
-        private void radioLettre_CheckedChanged(object sender, EventArgs e)
-        {
-            //this.Controls.Add(textlettre);
-            textlettre.Enabled = true;
-            choisirlettre();
-        }
-
-        private void radiomot_CheckedChanged(object sender, EventArgs e)
-        {
-            //this.Controls.Add(textmot);
-            textlettre.Enabled = false;
-            devinerMot();
-        }
+        #endregion
     }
 }
